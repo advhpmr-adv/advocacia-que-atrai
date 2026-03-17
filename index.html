@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advocacia que Atrai — Do zero clientes à agenda cheia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1E3C;
+    --navy-light: #1B3A6B;
+    --gold: #C8A04A;
+    --gold-light: #E8C66A;
+    --cream: #F9F5EE;
+    --white: #FFFFFF;
+    --gray: #6B7280;
+    --light: #F3F0EA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,160,74,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -150px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,58,107,0.8) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(200,160,74,0.15);
+    border: 1px solid rgba(200,160,74,0.4);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 86px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 12px;
+    animation: fadeUp 0.9s ease forwards;
+  }
+
+  .hero h1 span { color: var(--gold); }
+
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    margin-bottom: 40px;
+    animation: fadeUp 1s ease forwards;
+  }
+
+  .hero-desc {
+    max-width: 640px;
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.8;
+    margin-bottom: 56px;
+    animation: fadeUp 1.1s ease forwards;
+  }
+
+  .cta-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy);
+    font-size: 17px;
+    font-weight: 700;
+    padding: 20px 48px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: fadeUp 1.2s ease forwards;
+    box-shadow: 0 8px 32px rgba(200,160,74,0.35);
+  }
+
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 48px rgba(200,160,74,0.5);
+  }
+
+  .hero-note {
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    animation: fadeUp 1.3s ease forwards;
+  }
+
+  .scroll-line {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .scroll-line::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(200,160,74,0.6), transparent);
+    animation: pulse 2s infinite;
+  }
+
+  /* NUMBERS */
+  .numbers {
+    background: var(--gold);
+    padding: 48px 24px;
+  }
+
+  .numbers-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .number-item {
+    text-align: center;
+    padding: 16px;
+    border-right: 1px solid rgba(15,30,60,0.15);
+  }
+
+  .number-item:last-child { border-right: none; }
+
+  .number-item .n {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .number-item .l {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(15,30,60,0.65);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* SECTIONS */
+  section { padding: 96px 24px; }
+
+  .container { max-width: 900px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .section-body {
+    font-size: 17px;
+    color: var(--gray);
+    line-height: 1.8;
+    max-width: 680px;
+  }
+
+  /* DOR */
+  .dor { background: var(--light); }
+
+  .dor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .dor-card {
+    background: white;
+    border-left: 3px solid var(--gold);
+    padding: 28px 24px;
+    border-radius: 2px;
+  }
+
+  .dor-card p {
+    font-size: 16px;
+    color: var(--navy);
+    line-height: 1.7;
+  }
+
+  .dor-card p::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    color: var(--gold);
+    line-height: 0;
+    vertical-align: -16px;
+    margin-right: 4px;
+  }
+
+  /* PARA QUEM */
+  .para-quem { background: white; }
+
+  .pq-list {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pq-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    border: 1px solid rgba(200,160,74,0.25);
+    border-radius: 4px;
+    background: var(--cream);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .pq-item:hover {
+    border-color: var(--gold);
+    transform: translateX(4px);
+  }
+
+  .pq-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .pq-item p { font-size: 16px; color: var(--navy); line-height: 1.6; }
+
+  /* MÓDULOS */
+  .modulos { background: var(--navy); }
+  .modulos .section-title { color: white; }
+  .modulos .section-label { color: var(--gold-light); }
+
+  .modulos-grid {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .modulo-card {
+    background: rgba(255,255,255,0.03);
+    padding: 32px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+
+  .modulo-card:hover { background: rgba(200,160,74,0.06); }
+
+  .modulo-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .modulo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .modulo-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .modulo-aulas {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .modulo-aulas li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .modulo-aulas li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* BÔNUS */
+  .bonus { background: var(--light); }
+
+  .bonus-grid {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .bonus-card {
+    background: white;
+    padding: 28px 24px;
+    border-radius: 4px;
+    border-top: 3px solid var(--gold);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  }
+
+  .bonus-emoji { font-size: 28px; margin-bottom: 14px; }
+  .bonus-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .bonus-desc { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+  /* PROF */
+  .prof { background: white; }
+
+  .prof-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .prof-img-box {
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.2);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .prof-img-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--gold);
+  }
+
+  .prof-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .prof-role {
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .prof-text {
+    font-size: 16px;
+    color: var(--gray);
+    line-height: 1.9;
+  }
+
+  .prof-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .prof-tag {
+    background: var(--light);
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(200,160,74,0.3);
+  }
+
+  /* GARANTIA */
+  .garantia {
+    background: var(--navy);
+    text-align: center;
+  }
+
+  .garantia-box {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .garantia-icon {
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 32px;
+  }
+
+  .garantia h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .garantia p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+  }
+
+  /* CTA FINAL */
+  .cta-final {
+    background: var(--cream);
+    text-align: center;
+    padding: 96px 24px;
+  }
+
+  .price-box {
+    background: white;
+    border: 1px solid rgba(200,160,74,0.3);
+    border-radius: 4px;
+    padding: 56px 48px;
+    max-width: 560px;
+    margin: 48px auto 0;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .price-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  }
+
+  .price-from {
+    font-size: 14px;
+    color: var(--gray);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .price-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .price-main sup {
+    font-size: 28px;
+    vertical-align: super;
+  }
+
+  .price-installment {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 40px;
+  }
+
+  .faq { background: white; }
+
+  .faq-list {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 24px 0;
+  }
+
+  .faq-q {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-q::after {
+    content: '+';
+    color: var(--gold);
+    font-size: 24px;
+    font-weight: 300;
+  }
+
+  .faq-a {
+    font-size: 16px;
+    color: var(--gray);
+    line-height: 1.8;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 48px 24px;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.8;
+  }
+
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  /* ANIMS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+    .prof-inner { grid-template-columns: 1fr; }
+    .prof-img-box { aspect-ratio: 3/2; }
+    .modulos-grid { grid-template-columns: 1fr; }
+    .price-box { padding: 40px 24px; }
+    .price-main { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">Curso para Advogados Iniciantes</div>
+  <h1>Advocacia<br>que <span>Atrai</span></h1>
+  <p class="hero-sub">Do zero clientes à agenda cheia — sem depender de indicação</p>
+  <p class="hero-desc">O único curso que ensina advogados iniciantes a construir uma carteira de clientes real, usando posicionamento, autoridade digital e técnicas de captação — com ética e consistência.</p>
+  <a href="#inscricao" class="cta-primary">QUERO ME INSCREVER AGORA</a>
+  <p class="hero-note">🔒 Acesso imediato · Garantia de 7 dias</p>
+  <div class="scroll-line">role</div>
+</section>
+
+<!-- NÚMEROS -->
+<div class="numbers">
+  <div class="numbers-grid">
+    <div class="number-item"><div class="n">8</div><div class="l">Módulos</div></div>
+    <div class="number-item"><div class="n">34+</div><div class="l">Aulas</div></div>
+    <div class="number-item"><div class="n">20</div><div class="l">Vagas — Turma 1</div></div>
+    <div class="number-item"><div class="n">7</div><div class="l">Dias de garantia</div></div>
+  </div>
+</div>
+
+<!-- DOR -->
+<section class="dor">
+  <div class="container">
+    <div class="section-label">Você se identifica?</div>
+    <h2 class="section-title">Isso te parece familiar?</h2>
+    <div class="dor-grid">
+      <div class="dor-card"><p>Formei, tirei a OAB, mas não sei como conseguir meus primeiros clientes.</p></div>
+      <div class="dor-card"><p>Dependo só de indicação — quando para de chegar, fico sem nada.</p></div>
+      <div class="dor-card"><p>Vejo outros advogados crescendo no Instagram, mas não sei por onde começar.</p></div>
+      <div class="dor-card"><p>Tenho medo de cobrar, de perder o cliente na hora de falar em honorários.</p></div>
+      <div class="dor-card"><p>Postei algumas vezes, não deu resultado e desisti. Acho que não é pra mim.</p></div>
+      <div class="dor-card"><p>Sei muito direito — mas ninguém me encontra, ninguém me conhece.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section class="para-quem">
+  <div class="container">
+    <div class="section-label">Público ideal</div>
+    <h2 class="section-title">Este curso foi feito para você que…</h2>
+    <div class="pq-list">
+      <div class="pq-item"><div class="pq-icon">⚖️</div><p>É advogado(a) recém-formado(a) ou tem até 3 anos de OAB e quer construir sua carteira do zero</p></div>
+      <div class="pq-item"><div class="pq-icon">📵</div><p>Depende de indicação e quer aprender a captar clientes de forma independente e consistente</p></div>
+      <div class="pq-item"><div class="pq-icon">📱</div><p>Quer usar o Instagram, LinkedIn e o digital de forma ética e estratégica para atrair clientes</p></div>
+      <div class="pq-item"><div class="pq-icon">💬</div><p>Tem dificuldade em conduzir a consulta inicial, apresentar honorários e fechar contratos</p></div>
+      <div class="pq-item"><div class="pq-icon">🏢</div><p>Sonha em ter um escritório solo sustentável — ou já tem e quer estruturar melhor o crescimento</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section class="modulos">
+  <div class="container">
+    <div class="section-label">Conteúdo completo</div>
+    <h2 class="section-title">O que você vai aprender</h2>
+    <div class="modulos-grid">
+      <div class="modulo-card">
+        <div class="modulo-num">Módulo 01</div>
+        <div class="modulo-title">Mentalidade e Posicionamento</div>
+        <div class="modulo-desc">A base que separa quem tem clientes de quem fica esperando.</div>
+        <ul class="modulo-aulas">
+          <li>O erro fatal do advogado iniciante</li>
+          <li>Como definir seu nicho de forma lucrativa</li>
+          <li>Construa seu personagem profissional</li>
+          <li>Metas reais de captação de clientes</li>
+        </ul>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">Módulo 02</div>
+        <div class="modulo-title">Autoridade Digital</div>
+        <div class="modulo-desc">Como ser encontrado, lembrado e escolhido — mesmo sem seguidores.</div>
+        <ul class="modulo-aulas">
+          <li>LinkedIn para advogados que gera oportunidades</li>
+          <li>Instagram jurídico que converte (não só curte)</li>
+          <li>Criação de conteúdo sem travar</li>
+          <li>Rotina de postagem sustentável</li>
+        </ul>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">Módulo 03</div>
+        <div class="modulo-title">Atendimento que Fecha</div>
+        <div class="modulo-desc">Do primeiro contato ao contrato assinado — sem perder o cliente no meio do caminho.</div>
+        <ul class="modulo-aulas">
+          <li>O primeiro contato: como não perder logo de início</li>
+          <li>A consulta inicial como ferramenta de venda</li>
+          <li>Como apresentar honorários sem medo</li>
+          <li>Gestão de objeções e fechamento</li>
+        </ul>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">Módulo 04</div>
+        <div class="modulo-title">Reputação e Relacionamento</div>
+        <div class="modulo-desc">Clientes que voltam, indicam e falam bem de você.</div>
+        <ul class="modulo-aulas">
+          <li>Experiência do cliente na advocacia</li>
+          <li>Comunicação durante o processo</li>
+          <li>Pedindo indicações de forma natural</li>
+          <li>Gestão de avaliações e reputação online</li>
+        </ul>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">Módulo 05</div>
+        <div class="modulo-title">Tráfego e Captação Ativa</div>
+        <div class="modulo-desc">Ir além das redes sociais para gerar clientes de forma consistente.</div>
+        <ul class="modulo-aulas">
+          <li>Google Meu Negócio para advogados</li>
+          <li>Introdução ao tráfego pago jurídico</li>
+          <li>Parcerias estratégicas com outros profissionais</li>
+          <li>Lives e palestras como ferramenta de captação</li>
+        </ul>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">Módulo 06</div>
+        <div class="modulo-title">Gestão do Escritório</div>
+        <div class="modulo-desc">Organização, processos e escala para quem está começando a ter clientes.</div>
+        <ul class="modulo-aulas">
+          <li>Organização básica do escritório</li>
+          <li>Precificação inteligente por área</li>
+          <li>Quando e como contratar ajuda</li>
+          <li>Metas, métricas e revisões mensais</li>
+        </ul>
+      </div>
+      <div class="modulo-card" style="border-top:3px solid var(--gold);">
+        <div class="modulo-num" style="color:var(--gold-light);">Bônus 01</div>
+        <div class="modulo-title">Ações Rápidas e Prospecção Gratuita</div>
+        <div class="modulo-desc">TikTok jurídico e ações para conseguir clientes sem gastar nada.</div>
+        <ul class="modulo-aulas">
+          <li>Ações rápidas para o primeiro cliente em 7 dias</li>
+          <li>TikTok para advogados: como funciona</li>
+          <li>Conteúdo jurídico que bomba no TikTok</li>
+          <li>Como gerar leads gratuitos pelo TikTok</li>
+          <li>Rotina de 30 min/dia para prospectar de graça</li>
+        </ul>
+      </div>
+      <div class="modulo-card" style="border-top:3px solid var(--gold);">
+        <div class="modulo-num" style="color:var(--gold-light);">Bônus 02</div>
+        <div class="modulo-title">Acompanhamento e Mentoria</div>
+        <div class="modulo-desc">Suporte real para você não ficar sozinha na implementação.</div>
+        <ul class="modulo-aulas">
+          <li>Aula ao vivo de dúvidas (gravada na área de membros)</li>
+          <li>Como aproveitar ao máximo sua sessão de mentoria</li>
+          <li>1h de Mentoria Individual com Hevellyn (exclusiva)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BÔNUS -->
+<section class="bonus">
+  <div class="container">
+    <div class="section-label">Bônus exclusivos</div>
+    <h2 class="section-title">Você também recebe</h2>
+    <p class="section-body">Materiais práticos para acelerar sua implementação desde o primeiro dia.</p>
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <div class="bonus-emoji">📄</div>
+        <div class="bonus-title">Modelos de Contratos de Honorários</div>
+        <div class="bonus-desc">Editáveis, por área de atuação. Pronto para usar com seu cliente.</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">💬</div>
+        <div class="bonus-title">Scripts de Atendimento</div>
+        <div class="bonus-desc">WhatsApp, consulta presencial e online. Respostas prontas para cada situação.</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">📊</div>
+        <div class="bonus-title">Planilha de Controle de Clientes</div>
+        <div class="bonus-desc">Gerencie seus clientes, honorários e prazos de forma simples e visual.</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">✅</div>
+        <div class="bonus-title">Checklist de Onboarding</div>
+        <div class="bonus-desc">Tudo que você precisa fazer após fechar um contrato — sem esquecer nada.</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">⚖️</div>
+        <div class="bonus-title">Guia de Ética na Publicidade</div>
+        <div class="bonus-desc">O que a OAB permite e o que é vedado. Divulgue sem medo de infração.</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">📸</div>
+        <div class="bonus-title">Templates de Postagem Jurídica</div>
+        <div class="bonus-desc">Modelos prontos para o Instagram. Só adaptar e publicar.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFESSORA -->
+<section class="prof">
+  <div class="container">
+    <div class="prof-inner">
+      <div class="prof-img-box">sua foto aqui</div>
+      <div>
+        <div class="section-label">Quem vai te ensinar</div>
+        <div class="prof-name">Hevellyn Pryscylla</div>
+        <div class="prof-role">Advogada · Empresária · Mentora</div>
+        <p class="prof-text">
+          Advogada com escritório próprio, atuante em direito de família, previdenciário, trabalhista e cível. Construiu sua presença digital do zero, lidera uma equipe e hoje ensina outros advogados a replicar esse caminho — sem depender de indicação ou de grandes estruturas.<br><br>
+          Fala de quem viveu. Ensina o que funciona na prática, não o que soa bem na teoria.
+        </p>
+        <div class="prof-tags">
+          <span class="prof-tag">Direito de Família</span>
+          <span class="prof-tag">Direito Previdenciário</span>
+          <span class="prof-tag">Direito Civil</span>
+          <span class="prof-tag">Direito do Consumidor</span>
+          <span class="prof-tag">Marketing Jurídico</span>
+          <span class="prof-tag">Gestão de Escritório</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="garantia">
+  <div class="garantia-box">
+    <div class="garantia-icon">🛡️</div>
+    <h2>Garantia de 7 dias</h2>
+    <p>Se por qualquer motivo você não gostar do curso nos primeiros 7 dias após a compra, devolvemos 100% do seu dinheiro — sem perguntas, sem burocracia. O risco é todo nosso.</p>
+  </div>
+</section>
+
+<!-- URGÊNCIA VAGAS -->
+<div style="background:#B91C1C;padding:20px 24px;text-align:center;">
+  <p style="color:#FFFFFF;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;margin:0;letter-spacing:0.5px;">
+    ⚠️ TURMA 1 — Apenas <span style="color:#FCD34D;font-size:20px;">20 vagas</span> disponíveis · Cada aluno tem 1h de mentoria individual com Hevellyn
+  </p>
+  <p style="color:rgba(255,255,255,0.8);font-family:'DM Sans',sans-serif;font-size:13px;margin:8px 0 0;">
+    Após esgotar as vagas, o valor sobe para R$ 1.497 · Encerra em 22/03/2026
+  </p>
+</div>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="inscricao">
+  <div class="container">
+    <div class="section-label">Inscrição — Turma 1</div>
+    <h2 class="section-title" style="text-align:center">Garante sua vaga agora<br>antes de esgotar</h2>
+
+    <!-- Contador de vagas -->
+    <div style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap;">
+      <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:4px;padding:12px 20px;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#B91C1C;line-height:1;" id="vagas">20</div>
+        <div style="font-size:12px;color:#B91C1C;font-weight:700;letter-spacing:1px;text-transform:uppercase;">vagas totais</div>
+      </div>
+      <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:4px;padding:12px 20px;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#B91C1C;line-height:1;">22/03</div>
+        <div style="font-size:12px;color:#B91C1C;font-weight:700;letter-spacing:1px;text-transform:uppercase;">encerramento</div>
+      </div>
+      <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:4px;padding:12px 20px;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#B91C1C;line-height:1;">R$1.497</div>
+        <div style="font-size:12px;color:#B91C1C;font-weight:700;letter-spacing:1px;text-transform:uppercase;">próxima turma</div>
+      </div>
+    </div>
+
+    <div class="price-box">
+      <!-- Valor total -->
+      <div style="background:#F0F4FA;border-radius:4px;padding:16px;margin-bottom:24px;text-align:left;">
+        <div style="font-size:13px;font-weight:700;color:#1B3A6B;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;">O que você recebe:</div>
+        <div style="font-size:14px;color:#555;line-height:2;">
+          ✅ 7 módulos com 34+ aulas <span style="color:#9CA3AF;text-decoration:line-through;margin-left:8px;">R$ 997</span><br>
+          ✅ Módulo Bônus TikTok e Ações Rápidas <span style="color:#9CA3AF;text-decoration:line-through;margin-left:8px;">R$ 197</span><br>
+          ✅ 6 bônus práticos (contratos, scripts, planilhas) <span style="color:#9CA3AF;text-decoration:line-through;margin-left:8px;">R$ 197</span><br>
+          ✅ Aula ao vivo de dúvidas <span style="color:#9CA3AF;text-decoration:line-through;margin-left:8px;">R$ 100</span><br>
+          ✅ 1h de Mentoria Individual exclusiva <span style="color:#9CA3AF;text-decoration:line-through;margin-left:8px;">R$ 400</span>
+        </div>
+        <div style="border-top:1px solid #E0D9CC;margin-top:12px;padding-top:12px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:14px;font-weight:700;color:#1B3A6B;">Valor total:</span>
+          <span style="font-size:18px;font-weight:900;color:#9CA3AF;text-decoration:line-through;font-family:'Playfair Display',serif;">R$ 1.891</span>
+        </div>
+      </div>
+
+      <div style="font-size:13px;color:#9CA3AF;margin-bottom:2px;text-align:center;">Preço de lançamento — Turma 1</div>
+      <div class="price-main" style="text-align:center;"><sup>R$</sup>997</div>
+      <div class="price-installment" style="text-align:center;">ou 12x de R$ 99,70 no cartão</div>
+      <div style="background:#FEF3C7;border-radius:4px;padding:10px;margin-bottom:20px;text-align:center;">
+        <span style="font-size:13px;color:#92400E;font-weight:700;">🔥 Após as 20 vagas: R$ 1.497 · Garanta agora pelo menor preço</span>
+      </div>
+      <a href="https://pay.kiwify.com.br/yUrh2k5" class="cta-primary" style="display:block;text-align:center;width:100%;border-radius:4px">⚡ GARANTIR MINHA VAGA AGORA</a>
+      <p style="font-size:13px;color:#9CA3AF;margin-top:16px;text-align:center">🔒 Pagamento seguro · Acesso imediato · Garantia de 7 dias</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-label">Dúvidas frequentes</div>
+    <h2 class="section-title">Perguntas e respostas</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Preciso ter muitos anos de experiência?</div>
+        <div class="faq-a">Não. O curso foi desenhado especialmente para advogados com pouca ou nenhuma experiência em captação. O conteúdo começa do zero e avança de forma progressiva.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">O conteúdo respeita as normas da OAB?</div>
+        <div class="faq-a">Sim. Todo o módulo de autoridade digital e captação é desenvolvido dentro dos limites éticos do Código de Ética da OAB. Inclusive há um bônus específico sobre publicidade para advogados.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Por quanto tempo tenho acesso ao curso?</div>
+        <div class="faq-a">O acesso é por 12 meses a partir da data de compra, com todas as aulas e materiais incluídos.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Funciona para qualquer área do direito?</div>
+        <div class="faq-a">Sim. O método de captação e posicionamento funciona para qualquer especialidade jurídica — família, trabalhista, previdenciário, cível, criminal e outras.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">E se eu não gostar?</div>
+        <div class="faq-a">Você tem 7 dias de garantia. Se não gostar por qualquer motivo, basta entrar em contato e devolvemos 100% do valor pago.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Advocacia que Atrai</div>
+  <p>© 2026 Advocacia que Atrai. Todos os direitos reservados.<br>Este curso é destinado exclusivamente a advogados regularmente inscritos na OAB.</p>
+</footer>
+
+</body>
+</html>
